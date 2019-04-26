@@ -1,25 +1,21 @@
 package com.uni.app.main;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.BevelBorder;
 import java.awt.Color;
-import javax.swing.border.TitledBorder;
-import java.awt.GridBagLayout;
-import javax.swing.JLabel;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import javax.swing.JComboBox;
-import javax.swing.JTextField;
-import java.awt.Component;
-import javax.swing.Box;
-import javax.swing.JTextArea;
-import javax.swing.JButton;
-import javax.swing.JTextPane;
-import javax.swing.JPasswordField;
+import java.awt.EventQueue;
 import java.awt.Font;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.JTextPane;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.TitledBorder;
+import javax.swing.DefaultComboBoxModel;
 
 public class MainLauncher {
 	private JFrame frame;
@@ -35,6 +31,8 @@ public class MainLauncher {
 	private JPasswordField secondaryPassword;
 	private JTextField primaryTableCondition;
 	private JTextField secondaryTableCondition;
+	private JTextField primaryTableKey;
+	private JTextField secondaryTableKey;
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -74,14 +72,15 @@ public class MainLauncher {
 		frame.getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 		
-		JLabel lblOfConnections = new JLabel("*# of Connections :");
+		JLabel lblOfConnections = new JLabel("*# Environment :");
 		lblOfConnections.setBounds(10, 22, 99, 14);
 		panel_1.add(lblOfConnections);
 		
 		/* Connection Host Details */
-		JComboBox noOfConnections = new JComboBox();
-		noOfConnections.setBounds(119, 19, 120, 20);
-		panel_1.add(noOfConnections);
+		JComboBox noOfEnvironment = new JComboBox();
+		noOfEnvironment.setModel(new DefaultComboBoxModel(new String[] {"ONE", "TWO"}));
+		noOfEnvironment.setBounds(119, 19, 120, 20);
+		panel_1.add(noOfEnvironment);
 		
 		JLabel lblPrimaryHost = new JLabel("*Primary Host :");
 		lblPrimaryHost.setBounds(10, 55, 99, 14);
@@ -129,7 +128,7 @@ public class MainLauncher {
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBorder(new TitledBorder(null, "Table Details", TitledBorder.CENTER, TitledBorder.TOP, null, Color.BLACK));
-		panel_2.setBounds(10, 153, 964, 130);
+		panel_2.setBounds(10, 153, 964, 162);
 		frame.getContentPane().add(panel_2);
 		panel_2.setLayout(null);
 		
@@ -142,11 +141,11 @@ public class MainLauncher {
 		panel_2.add(lblSecondarytableName);
 		
 		JLabel lblPrimaryTableColumns = new JLabel("Primary Table Columns:");
-		lblPrimaryTableColumns.setBounds(10, 50, 124, 14);
+		lblPrimaryTableColumns.setBounds(10, 82, 124, 14);
 		panel_2.add(lblPrimaryTableColumns);
 		
 		JLabel lblSecondaryTableColumns = new JLabel("Secondary Table Columns :");
-		lblSecondaryTableColumns.setBounds(483, 50, 141, 14);
+		lblSecondaryTableColumns.setBounds(483, 82, 141, 14);
 		panel_2.add(lblSecondaryTableColumns);
 		
 		primaryTableName = new JTextField();
@@ -155,11 +154,11 @@ public class MainLauncher {
 		primaryTableName.setColumns(10);
 		
 		JTextArea primaryTableColumn = new JTextArea();
-		primaryTableColumn.setBounds(144, 48, 305, 44);
+		primaryTableColumn.setBounds(144, 80, 305, 44);
 		panel_2.add(primaryTableColumn);
 		
 		JTextArea secondaryTableColumn = new JTextArea();
-		secondaryTableColumn.setBounds(634, 48, 305, 44);
+		secondaryTableColumn.setBounds(634, 80, 305, 44);
 		panel_2.add(secondaryTableColumn);
 		
 		secondaryTableName = new JTextField();
@@ -168,22 +167,40 @@ public class MainLauncher {
 		panel_2.add(secondaryTableName);
 		
 		JLabel lblPrimaryTableCondition = new JLabel("Primary Table Condition:");
-		lblPrimaryTableCondition.setBounds(10, 102, 124, 14);
+		lblPrimaryTableCondition.setBounds(10, 134, 124, 14);
 		panel_2.add(lblPrimaryTableCondition);
 		
 		primaryTableCondition = new JTextField();
 		primaryTableCondition.setColumns(10);
-		primaryTableCondition.setBounds(144, 99, 305, 20);
+		primaryTableCondition.setBounds(144, 131, 305, 20);
 		panel_2.add(primaryTableCondition);
 		
 		JLabel lblSecondaryTableCondition = new JLabel("Secondary Table Condition:");
-		lblSecondaryTableCondition.setBounds(483, 102, 141, 14);
+		lblSecondaryTableCondition.setBounds(483, 134, 141, 14);
 		panel_2.add(lblSecondaryTableCondition);
 		
 		secondaryTableCondition = new JTextField();
 		secondaryTableCondition.setColumns(10);
-		secondaryTableCondition.setBounds(634, 99, 305, 20);
+		secondaryTableCondition.setBounds(634, 131, 305, 20);
 		panel_2.add(secondaryTableCondition);
+		
+		JLabel lblPrimaryTableKey = new JLabel("*Primary Table Key:");
+		lblPrimaryTableKey.setBounds(10, 54, 124, 14);
+		panel_2.add(lblPrimaryTableKey);
+		
+		primaryTableKey = new JTextField();
+		primaryTableKey.setColumns(10);
+		primaryTableKey.setBounds(144, 51, 305, 20);
+		panel_2.add(primaryTableKey);
+		
+		JLabel lblSecondaryTableKey = new JLabel("*Secondary Table Key:");
+		lblSecondaryTableKey.setBounds(483, 54, 141, 14);
+		panel_2.add(lblSecondaryTableKey);
+		
+		secondaryTableKey = new JTextField();
+		secondaryTableKey.setColumns(10);
+		secondaryTableKey.setBounds(634, 51, 305, 20);
+		panel_2.add(secondaryTableKey);
 		
 		JButton btnReset = new JButton("Reset");
 		btnReset.setBounds(531, 120, 116, 30);
@@ -211,11 +228,11 @@ public class MainLauncher {
 		
 		JTextPane outputTextPane = new JTextPane();
 		outputTextPane.setEditable(false);
-		outputTextPane.setBounds(10, 308, 964, 442);
+		outputTextPane.setBounds(10, 351, 964, 399);
 		frame.getContentPane().add(outputTextPane);
 		
 		JLabel lblComparisionDetails = new JLabel("Comparision Details");
-		lblComparisionDetails.setBounds(445, 293, 103, 14);
+		lblComparisionDetails.setBounds(445, 326, 103, 14);
 		frame.getContentPane().add(lblComparisionDetails);
 	}
 }
